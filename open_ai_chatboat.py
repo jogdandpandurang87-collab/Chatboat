@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Set environment variables correctly
-os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
 os.environ['LANGCHAIN_API_KEY'] = os.getenv("LANGCHAIN_API_KEY")
 os.environ['LANGCHAIN_PROJECT'] = os.getenv("LANGCHAIN_PROJECT")
 os.environ['LANGCHAIN_TRACING_V2'] = "true"
@@ -32,3 +32,4 @@ chain = prompt | llm | output_parser
 
 if inpt_text:
     st.write(chain.invoke({'question': inpt_text}))
+
