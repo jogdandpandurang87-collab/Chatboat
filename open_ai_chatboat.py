@@ -22,7 +22,7 @@ prompt = ChatPromptTemplate.from_messages([
     ("user", "Question: {question}")
 ])
 
-st.title('LangChain Demo With OPENAI API')
+st.title('AI Chat Assistant')
 inpt_text = st.text_input('Search the topic you want')
 
 # LLM
@@ -32,4 +32,5 @@ chain = prompt | llm | output_parser
 
 if inpt_text:
     st.write(chain.invoke({'question': inpt_text}))
+
 
